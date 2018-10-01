@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Telosys Database Repository --><root>
+<tableList databaseId="0" databaseName="MYSQL" databaseProductName="MySQL" generation="2018-10-01 16:28:43">
+<table catalog="tryhardmore" databaseType="TABLE" javaBean="Catagory" name="catagory" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="name" dbNotNull="false" dbPosition="2" dbSize="11" dbTypeName="VARCHAR" inputType="text" javaName="name" javaType="java.lang.String" jdbcTypeCode="12" label="Name" maxLength="11" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="catagory_group_id" dbNotNull="false" dbPosition="3" dbSize="10" dbTypeName="INT" inputType="number" javaName="catagoryGroupId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Catagory group id" notNull="false" selected="true"/>
+<fk name="fk_catagory_groups_catagory_1">
+<fkcol colname="catagory_group_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="catagory" tableref="groups_catagory" updaterule="3"/>
+</fk>
+<link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_catagory_groups_catagory_1" id="LINK_FK_fk_catagory_groups_catagory_1_O" inverseSideOf="" javaName="groupsCatagory" javaType="GroupsCatagory" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="catagory" targetEntity="GroupsCatagory" targetTableName="groups_catagory" used="true">
+<joinColumns>
+<joinColumn insertable="false" name="catagory_group_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+</joinColumns>
+</link>
+<link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_post_catagory_1" id="LINK_FK_fk_post_catagory_1_I" inverseSideOf="LINK_FK_fk_post_catagory_1_O" javaName="listOfPost" javaType="java.util.List" joinTableName="" mappedBy="catagory" optional="" owningSide="false" sourceTableName="catagory" targetEntity="Post" targetTableName="post" used="true"/>
+</table>
+<table catalog="tryhardmore" databaseType="TABLE" javaBean="Comment" name="comment" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="post_id" dbNotNull="false" dbPosition="2" dbSize="10" dbTypeName="INT" inputType="number" javaName="postId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Post id" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="content" dbNotNull="false" dbPosition="3" dbSize="50" dbTypeName="VARCHAR" inputType="text" javaName="content" javaType="java.lang.String" jdbcTypeCode="12" label="Content" maxLength="50" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="0" dbName="like" dbNotNull="false" dbPosition="4" dbSize="10" dbTypeName="INT" inputType="number" javaName="like" javaType="java.lang.Integer" jdbcTypeCode="4" label="Like" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="user_profile_id" dbNotNull="false" dbPosition="5" dbSize="10" dbTypeName="INT" inputType="number" javaName="userProfileId" javaType="java.lang.Integer" jdbcTypeCode="4" label="User profile id" notNull="false" selected="true"/>
+<column dateType="DT" dbComment="" dbDefaultValue="" dbName="created_time" dbNotNull="false" dbPosition="6" dbSize="19" dbTypeName="TIMESTAMP" inputType="" javaName="createdTime" javaType="java.util.Date" jdbcTypeCode="93" label="Created time" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="show_status" dbNotNull="false" dbPosition="7" dbSize="0" dbTypeName="BIT" inputType="checkbox" javaName="showStatus" javaType="java.lang.Boolean" jdbcTypeCode="-7" label="Show status" notNull="false" selected="true"/>
+<fk name="fk_comment_post_1">
+<fkcol colname="post_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="comment" tableref="post" updaterule="3"/>
+</fk>
+<fk name="fk_comment_user_profile_id_1">
+<fkcol colname="user_profile_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="comment" tableref="user_profile" updaterule="3"/>
+</fk>
+<link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_comment_post_1" id="LINK_FK_fk_comment_post_1_O" inverseSideOf="" javaName="post" javaType="Post" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="comment" targetEntity="Post" targetTableName="post" used="true">
+<joinColumns>
+<joinColumn insertable="false" name="post_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+</joinColumns>
+</link>
+<link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_comment_user_profile_id_1" id="LINK_FK_fk_comment_user_profile_id_1_O" inverseSideOf="" javaName="userProfile" javaType="UserProfile" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="comment" targetEntity="UserProfile" targetTableName="user_profile" used="true">
+<joinColumns>
+<joinColumn insertable="false" name="user_profile_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+</joinColumns>
+</link>
+</table>
+<table catalog="tryhardmore" databaseType="TABLE" javaBean="GmailUser" name="gmail_user" schema="">
+<column dbComment="" dbDefaultValue="" dbName="user_profile_id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="userProfileId" javaType="java.lang.Integer" jdbcTypeCode="4" label="User profile id" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="facebook_id" dbNotNull="true" dbPosition="2" dbSize="30" dbTypeName="VARCHAR" inputType="text" javaName="facebookId" javaType="java.lang.String" jdbcTypeCode="12" label="Facebook id" maxLength="30" notEmpty="true" notNull="true" selected="true"/>
+<fk name="facebook_user_foreign">
+<fkcol colname="user_profile_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="gmail_user" tableref="user_profile" updaterule="3"/>
+</fk>
+<link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="facebook_user_foreign" id="LINK_FK_facebook_user_foreign_O" inverseSideOf="" javaName="userProfile" javaType="UserProfile" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="gmail_user" targetEntity="UserProfile" targetTableName="user_profile" used="true">
+<joinColumns>
+<joinColumn insertable="false" name="user_profile_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+</joinColumns>
+</link>
+</table>
+<table catalog="tryhardmore" databaseType="TABLE" javaBean="GroupsCatagory" name="groups_catagory" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="name" dbNotNull="true" dbPosition="2" dbSize="50" dbTypeName="VARCHAR" inputType="text" javaName="name" javaType="java.lang.String" jdbcTypeCode="12" label="Name" maxLength="50" notEmpty="true" notNull="true" selected="true"/>
+<link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_catagory_groups_catagory_1" id="LINK_FK_fk_catagory_groups_catagory_1_I" inverseSideOf="LINK_FK_fk_catagory_groups_catagory_1_O" javaName="listOfCatagory" javaType="java.util.List" joinTableName="" mappedBy="groupsCatagory" optional="" owningSide="false" sourceTableName="groups_catagory" targetEntity="Catagory" targetTableName="catagory" used="true"/>
+</table>
+<table catalog="tryhardmore" databaseType="TABLE" javaBean="Post" name="post" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="title" dbNotNull="false" dbPosition="2" dbSize="20" dbTypeName="VARCHAR" inputType="text" javaName="title" javaType="java.lang.String" jdbcTypeCode="12" label="Title" maxLength="20" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="content" dbNotNull="false" dbPosition="3" dbSize="1024" dbTypeName="VARCHAR" inputType="text" javaName="content" javaType="java.lang.String" jdbcTypeCode="12" label="Content" maxLength="1024" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="catagory_id" dbNotNull="false" dbPosition="4" dbSize="10" dbTypeName="INT" inputType="number" javaName="catagoryId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Catagory id" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="user_profile_id" dbNotNull="false" dbPosition="5" dbSize="10" dbTypeName="INT" inputType="number" javaName="userProfileId" javaType="java.lang.Integer" jdbcTypeCode="4" label="User profile id" notNull="false" selected="true"/>
+<column dateType="DT" dbComment="" dbDefaultValue="" dbName="created_time" dbNotNull="false" dbPosition="6" dbSize="19" dbTypeName="TIMESTAMP" inputType="" javaName="createdTime" javaType="java.util.Date" jdbcTypeCode="93" label="Created time" notNull="false" selected="true"/>
+<column dateType="DT" dbComment="" dbDefaultValue="" dbName="updated_time" dbNotNull="false" dbPosition="7" dbSize="19" dbTypeName="TIMESTAMP" inputType="" javaName="updatedTime" javaType="java.util.Date" jdbcTypeCode="93" label="Updated time" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="show_status" dbNotNull="false" dbPosition="8" dbSize="0" dbTypeName="BIT" inputType="checkbox" javaName="showStatus" javaType="java.lang.Boolean" jdbcTypeCode="-7" label="Show status" notNull="false" selected="true"/>
+<fk name="fk_post_catagory_1">
+<fkcol colname="catagory_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="post" tableref="catagory" updaterule="3"/>
+</fk>
+<fk name="fk_post_user_profile_1">
+<fkcol colname="user_profile_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="post" tableref="user_profile" updaterule="3"/>
+</fk>
+<link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_post_user_profile_1" id="LINK_FK_fk_post_user_profile_1_O" inverseSideOf="" javaName="userProfile" javaType="UserProfile" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="post" targetEntity="UserProfile" targetTableName="user_profile" used="true">
+<joinColumns>
+<joinColumn insertable="false" name="user_profile_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+</joinColumns>
+</link>
+<link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_comment_post_1" id="LINK_FK_fk_comment_post_1_I" inverseSideOf="LINK_FK_fk_comment_post_1_O" javaName="listOfComment" javaType="java.util.List" joinTableName="" mappedBy="post" optional="" owningSide="false" sourceTableName="post" targetEntity="Comment" targetTableName="comment" used="true"/>
+<link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_post_tag_post_1" id="LINK_FK_fk_post_tag_post_1_I" inverseSideOf="LINK_FK_fk_post_tag_post_1_O" javaName="listOfPostTag" javaType="java.util.List" joinTableName="" mappedBy="post" optional="" owningSide="false" sourceTableName="post" targetEntity="PostTag" targetTableName="post_tag" used="true"/>
+<link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_post_catagory_1" id="LINK_FK_fk_post_catagory_1_O" inverseSideOf="" javaName="catagory" javaType="Catagory" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="post" targetEntity="Catagory" targetTableName="catagory" used="true">
+<joinColumns>
+<joinColumn insertable="false" name="catagory_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+</joinColumns>
+</link>
+</table>
+<table catalog="tryhardmore" databaseType="TABLE" javaBean="PostTag" name="post_tag" schema="">
+<column dbComment="" dbDefaultValue="" dbName="tag_id" dbNotNull="false" dbPosition="1" dbSize="10" dbTypeName="INT" inputType="number" javaName="tagId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Tag id" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="post_id" dbNotNull="false" dbPosition="2" dbSize="10" dbTypeName="INT" inputType="number" javaName="postId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Post id" notNull="false" selected="true"/>
+<fk name="fk_post_tag_post_1">
+<fkcol colname="post_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="post_tag" tableref="post" updaterule="3"/>
+</fk>
+<fk name="fk_tag_post_tag_1">
+<fkcol colname="tag_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="post_tag" tableref="tag" updaterule="3"/>
+</fk>
+<link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_post_tag_post_1" id="LINK_FK_fk_post_tag_post_1_O" inverseSideOf="" javaName="post" javaType="Post" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="post_tag" targetEntity="Post" targetTableName="post" used="true">
+<joinColumns>
+<joinColumn insertable="false" name="post_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+</joinColumns>
+</link>
+<link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_tag_post_tag_1" id="LINK_FK_fk_tag_post_tag_1_O" inverseSideOf="" javaName="tag" javaType="Tag" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="post_tag" targetEntity="Tag" targetTableName="tag" used="true">
+<joinColumns>
+<joinColumn insertable="false" name="tag_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+</joinColumns>
+</link>
+</table>
+<table catalog="tryhardmore" databaseType="TABLE" javaBean="Role" name="role" schema="">
+<column dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="role_name" dbNotNull="true" dbPosition="2" dbSize="20" dbTypeName="VARCHAR" inputType="text" javaName="roleName" javaType="java.lang.String" jdbcTypeCode="12" label="Role name" maxLength="20" notEmpty="true" notNull="true" selected="true"/>
+<link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="role_foreign" id="LINK_FK_role_foreign_I" inverseSideOf="LINK_FK_role_foreign_O" javaName="listOfUserProfile" javaType="java.util.List" joinTableName="" mappedBy="role" optional="" owningSide="false" sourceTableName="role" targetEntity="UserProfile" targetTableName="user_profile" used="true"/>
+</table>
+<table catalog="tryhardmore" databaseType="TABLE" javaBean="Tag" name="tag" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="name" dbNotNull="false" dbPosition="2" dbSize="50" dbTypeName="VARCHAR" inputType="text" javaName="name" javaType="java.lang.String" jdbcTypeCode="12" label="Name" maxLength="50" notNull="false" selected="true"/>
+<link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_tag_post_tag_1" id="LINK_FK_fk_tag_post_tag_1_I" inverseSideOf="LINK_FK_fk_tag_post_tag_1_O" javaName="listOfPostTag" javaType="java.util.List" joinTableName="" mappedBy="tag" optional="" owningSide="false" sourceTableName="tag" targetEntity="PostTag" targetTableName="post_tag" used="true"/>
+</table>
+<table catalog="tryhardmore" databaseType="TABLE" javaBean="User" name="user" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="user_profile_id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="userProfileId" javaType="java.lang.Integer" jdbcTypeCode="4" label="User profile id" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="email" dbNotNull="true" dbPosition="2" dbSize="254" dbTypeName="VARCHAR" inputType="text" javaName="email" javaType="java.lang.String" jdbcTypeCode="12" label="Email" maxLength="254" notEmpty="true" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="password" dbNotNull="true" dbPosition="3" dbSize="200" dbTypeName="VARCHAR" inputType="text" javaName="password" javaType="java.lang.String" jdbcTypeCode="12" label="Password" maxLength="200" notEmpty="true" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="password_salt" dbNotNull="true" dbPosition="4" dbSize="50" dbTypeName="VARCHAR" inputType="text" javaName="passwordSalt" javaType="java.lang.String" jdbcTypeCode="12" label="Password salt" maxLength="50" notEmpty="true" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="password_hash_algorithm" dbNotNull="false" dbPosition="5" dbSize="50" dbTypeName="VARCHAR" inputType="text" javaName="passwordHashAlgorithm" javaType="java.lang.String" jdbcTypeCode="12" label="Password hash algorithm" maxLength="50" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="password_reminder_token" dbNotNull="false" dbPosition="6" dbSize="100" dbTypeName="VARCHAR" inputType="text" javaName="passwordReminderToken" javaType="java.lang.String" jdbcTypeCode="12" label="Password reminder token" maxLength="100" notNull="false" selected="true"/>
+<column dateType="DT" dbComment="" dbDefaultValue="" dbName="password_reminder_expire" dbNotNull="false" dbPosition="7" dbSize="19" dbTypeName="TIMESTAMP" inputType="" javaName="passwordReminderExpire" javaType="java.util.Date" jdbcTypeCode="93" label="Password reminder expire" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="email_confirm_token" dbNotNull="false" dbPosition="8" dbSize="100" dbTypeName="VARCHAR" inputType="text" javaName="emailConfirmToken" javaType="java.lang.String" jdbcTypeCode="12" label="Email confirm token" maxLength="100" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="user_status" dbNotNull="false" dbPosition="9" dbSize="10" dbTypeName="INT" inputType="number" javaName="userStatus" javaType="java.lang.Integer" jdbcTypeCode="4" label="User status" notNull="false" selected="true"/>
+<fk name="user_user_profile">
+<fkcol colname="user_profile_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="user" tableref="user_profile" updaterule="3"/>
+</fk>
+<link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="user_user_profile" id="LINK_FK_user_user_profile_O" inverseSideOf="" javaName="userProfile" javaType="UserProfile" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="user" targetEntity="UserProfile" targetTableName="user_profile" used="true">
+<joinColumns>
+<joinColumn insertable="false" name="user_profile_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+</joinColumns>
+</link>
+</table>
+<table catalog="tryhardmore" databaseType="TABLE" javaBean="UserProfile" name="user_profile" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="fullname" dbNotNull="false" dbPosition="2" dbSize="50" dbTypeName="VARCHAR" inputType="text" javaName="fullname" javaType="java.lang.String" jdbcTypeCode="12" label="Fullname" maxLength="50" notNull="false" selected="true"/>
+<column dateType="DT" dbComment="" dbDefaultValue="" dbName="birthday" dbNotNull="false" dbPosition="3" dbSize="19" dbTypeName="TIMESTAMP" inputType="" javaName="birthday" javaType="java.util.Date" jdbcTypeCode="93" label="Birthday" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="avt" dbNotNull="false" dbPosition="4" dbSize="50" dbTypeName="VARCHAR" inputType="text" javaName="avt" javaType="java.lang.String" jdbcTypeCode="12" label="Avt" maxLength="50" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="role_id" dbNotNull="true" dbPosition="5" dbSize="10" dbTypeName="INT" inputType="number" javaName="roleId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Role id" notNull="true" selected="true"/>
+<column dateType="DT" dbComment="" dbDefaultValue="" dbName="created_time" dbNotNull="false" dbPosition="6" dbSize="19" dbTypeName="TIMESTAMP" inputType="" javaName="createdTime" javaType="java.util.Date" jdbcTypeCode="93" label="Created time" notNull="false" selected="true"/>
+<fk name="role_foreign">
+<fkcol colname="role_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="user_profile" tableref="role" updaterule="3"/>
+</fk>
+<link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="role_foreign" id="LINK_FK_role_foreign_O" inverseSideOf="" javaName="role" javaType="Role" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="user_profile" targetEntity="Role" targetTableName="role" used="true">
+<joinColumns>
+<joinColumn insertable="false" name="role_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+</joinColumns>
+</link>
+<link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="user_user_profile" id="LINK_FK_user_user_profile_I" inverseSideOf="LINK_FK_user_user_profile_O" javaName="listOfUser" javaType="java.util.List" joinTableName="" mappedBy="userProfile" optional="" owningSide="false" sourceTableName="user_profile" targetEntity="User" targetTableName="user" used="true"/>
+<link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_post_user_profile_1" id="LINK_FK_fk_post_user_profile_1_I" inverseSideOf="LINK_FK_fk_post_user_profile_1_O" javaName="listOfPost" javaType="java.util.List" joinTableName="" mappedBy="userProfile" optional="" owningSide="false" sourceTableName="user_profile" targetEntity="Post" targetTableName="post" used="true"/>
+<link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="facebook_user_foreign" id="LINK_FK_facebook_user_foreign_I" inverseSideOf="LINK_FK_facebook_user_foreign_O" javaName="listOfGmailUser" javaType="java.util.List" joinTableName="" mappedBy="userProfile" optional="" owningSide="false" sourceTableName="user_profile" targetEntity="GmailUser" targetTableName="gmail_user" used="true"/>
+<link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_comment_user_profile_id_1" id="LINK_FK_fk_comment_user_profile_id_1_I" inverseSideOf="LINK_FK_fk_comment_user_profile_id_1_O" javaName="listOfComment" javaType="java.util.List" joinTableName="" mappedBy="userProfile" optional="" owningSide="false" sourceTableName="user_profile" targetEntity="Comment" targetTableName="comment" used="true"/>
+</table>
+</tableList>
+</root>
